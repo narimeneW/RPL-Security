@@ -20,12 +20,10 @@ PROCESS_THREAD(rpl_security_process, ev, data)
 
 if(linkaddr_node_addr.u8[LINKADDR_SIZE-1] == 1) {
   uip_ipaddr_t root_ipaddr;
-  uip_ip6addr(&root_ipaddr, 0xaaaa,0,0,0,0,0,0,1);  /* pick a root IPv6 */
+  uip_ip6addr(&root_ipaddr, 0xaaaa,0,0,0,0,0,0,1);  
   
-  /* Set prefix for root before starting DAG */
   rpl_dag_root_set_prefix(&root_ipaddr, NULL);
   
-  /* Start the DAG as root */
   rpl_dag_root_start();
   
   LOG_INFO("This mote is the RPL DAG root!\n");
@@ -43,7 +41,6 @@ if(linkaddr_node_addr.u8[LINKADDR_SIZE-1] == 1) {
 
       LOG_INFO("Mote %u - DAG ID: ", linkaddr_node_addr.u8[LINKADDR_SIZE - 1]);
 
-      // Print DAG ID (typically a uip_ipaddr_t struct)
       LOG_INFO_6ADDR(&dag->dag_id);
       LOG_INFO_(" | Rank: %u", dag->rank);
 
