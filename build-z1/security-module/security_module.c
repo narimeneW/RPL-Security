@@ -9,7 +9,6 @@
 PROCESS(security_monitor_process, "RPL Security Monitor");
 AUTOSTART_PROCESSES(&security_monitor_process);
 
-/* ---- Blackhole detection (works in Contiki-NG) ---- */
 static uint8_t detect_blackhole(void) {
   int route_count = uip_ds6_route_num_routes();
 
@@ -20,11 +19,10 @@ static uint8_t detect_blackhole(void) {
   return 0;
 }
 
-/* ---- Rank attack detection ---- */
 static uint8_t detect_rank_attack(rpl_rank_t previous_rank) {
   rpl_dag_t *dag = rpl_get_any_dag();
   if(dag) {
-    rpl_rank_t current_rank = dag->rank;   // Contiki-NG valid method
+    rpl_rank_t current_rank = dag->rank;
 
     if(previous_rank > 0 && current_rank < previous_rank - MAX_RANK_CHANGE) {
       printf("SECURITY ALERT: Possible Rank attack - suspicious rank change!\n");
