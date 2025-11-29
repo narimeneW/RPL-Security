@@ -1,0 +1,19 @@
+# Ignore build artifacts except z1 builds
+build/
+*.o
+*.elf
+*.map
+
+# Ignore backup files
+*~
+*.swp
+
+# Ignore Cooja auto files (you removed them anyway)
+*.cooja
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Keep build-z1
+!build-z1/
