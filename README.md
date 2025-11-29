@@ -16,14 +16,6 @@ TECHNOLOGIES & TOOLS
 ------------------------------------------------------------
 PROJECT STRUCTURE
 ------------------------------------------------------------
-build-z1/
-│
-├── normal/              → Standard RPL operation (baseline)
-├── blackhole/           → Blackhole attack implementation
-├── rank/                → Rank manipulation attack
-├── selective-forward/   → Selective forwarding attack
-├── sybil/               → Sybil attack
-└── security-module/     → Proposed defense mechanism
 
 Each folder contains:
 - Makefile configured for Z1 motes
@@ -86,9 +78,4 @@ LICENSE
 This project is intended for academic and research purposes only.
 Code may be reused for learning or scientific publications.
 
-------------------------------------------------------------
-AUTHOR
-------------------------------------------------------------
-Name:  Narimene
-Field: Cybersecurity & IoT Security
-Contact: your-email@example.com
+
